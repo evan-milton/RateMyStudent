@@ -1,0 +1,80 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  background-color: #eee;
+}
+
+header {
+	margin: 0;
+}
+
+.site-title {
+	font-weight: 300;
+	margin: 0;
+	background-color: #97bfe8;
+	padding: 12px;
+	color: white;
+	text-align: center;
+	font-size: 75px;
+}
+
+.navbar {
+	background-color: white;
+	margin: 0;
+	padding: 15px;
+}
+
+.navlist {
+  list-style: none;
+  margin: 0;
+}
+
+.navitem {
+	display: inline-block;
+}
+
+.navitem.signin-up {
+	float: right;
+}
+
+button {
+	outline: none;
+}
+
+.navbar-search {
+  float: right;
+  margin-right: 20px;
+  padding: 0;
+  line-height: 38px;
+}
+
+#navbar-search-input {
+  padding: 4px;
+  font-size: 16px;
+  background-color: #f5f4f4;
+  border: 1px solid #dadada;
+  border-radius: 2px;
+}
+
+#navbar-search-input:focus {
+  outline: none;
+  background-color: #fff;
+}
+
+#navbar-search-button {
+  margin-left: -5px;
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: #343434;
+  cursor: pointer;
+}
+
+#navbar-search-button:hover {
+  color: #97bfe8;
+}
+
+#navbar-search-button:focus {
+  color: #319df6;
+  outline: none;
+}
