@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset= "utf - 8">
+  <title> Rate My Student </title>
 
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Sigmar+One|VT323" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
+
+  <link rel="stylesheet" href = "style.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <header>
+    <h1 class="site-title"> Rate Your Students </h1>
+    <nav class= "navbar">
+      <ul class="navlist">
+        <li class= "navitem search-bar">
+          <input type="text" id="navbar-search-input" placeholder="Search students...">
+          <button type="button" id="navbar-search-button"><i class="fa fa-male" aria-hidden="false"></i>
+          </button>
+        </lic>
+
+        <li class= "navitem signin-up">
+          <button type="button" id="sign-in-button"> Sign In </button>
+        </li>
+        <li class= "navitem signin-up">
+          <button type="button" id="sign-up-button"> Sign Up </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Write a Review</h1>
+    <form>
+      <div class="form-group">
+        <label for="studentName">Student</label>
+        <input type="text" class="form-control" id="studentName" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <label for="title">Review Title</label>
+        <input type="text" class="form-control" id="title" placeholder="Title">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" rows="3" placeholder="Explain the rating..."></textarea>
+      </div>
+      <div class="form-group">
+        <label for="course">Course</label>
+        <input type="text" class="form-control" id="course" placeholder="Course">
+      </div>
+      <div class="form-group">
+        <label for="rating">Rating</label>
+        <div class="star-rating">
+          <div class="star-rating__wrap">
+            <input class="star-rating__input" id="star-rating-5" type="radio" name="rating" value="5">
+            <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-5" title="5 out of 5 stars"></label>
+            <input class="star-rating__input" id="star-rating-4" type="radio" name="rating" value="4">
+            <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-4" title="4 out of 5 stars"></label>
+            <input class="star-rating__input" id="star-rating-3" type="radio" name="rating" value="3">
+            <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-3" title="3 out of 5 stars"></label>
+            <input class="star-rating__input" id="star-rating-2" type="radio" name="rating" value="2">
+            <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-2" title="2 out of 5 stars"></label>
+            <input class="star-rating__input" id="star-rating-1" type="radio" name="rating" value="1">
+            <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-1" title="1 out of 5 stars"></label>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+
+</body>
