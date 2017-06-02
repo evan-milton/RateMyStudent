@@ -8,16 +8,18 @@
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 		<link rel="stylesheet" href = "style.css">
 
 	</head>
 
 	<body>
 		<header>
-			<h1 class="site-title"> Rate Your Students </h1>
+			<h1 class="site-title" id="title-button"> Rate Your Students </h1>
 			<nav class= "navbar">
 				<ul class="navlist">
-					<li class= "navitem search-bar"> 
+					<li class= "navitem search-bar">
 					<input type="text" id="navbar-search-input" placeholder="Search students...">
 			        <button type="button" id="navbar-search-button"><i class="fa fa-male" aria-hidden="false"></i>
 			        </button>
@@ -29,6 +31,13 @@
 			        <li class= "navitem signin-up">
 			        	<button type="button" id="sign-up-button"> Sign Up </button>
 			        </li>
+							<li class="navitem signin-up">
+								<?php
+									if(isset($_COOKIE["user"])) {
+										echo "<h4>" . $_COOKIE["user"] . "</h4>";
+									}
+								?>
+							</li>
 			    </ul>
 			</nav>
 			</header>
@@ -39,15 +48,16 @@
 					<div class="review-content">
 						<p class="review-title"> Review Title </p>
 						<p class="review-author"> By: harold69 </p>
-						<p class="review-text"> This teacher sucks </p>
+						<p class="review-text"> This student sucks </p>
+						<i class="fa fa-star" aria-hidden="false"></i>
 						<i class="fa fa-star" aria-hidden="false"></i>
 					</div>
 				</article>
 				<article class="review">
 					<div class="review-content">
-						<p class="review-title"> Review Title </p>
+						<p class="review-title"> Review Title 2: The SQL </p>
 						<p class="review-author"> By: harold69 </p>
-						<p class="review-text"> This teacher sucks </p>
+						<p class="review-text"> This student really sucks </p>
 						<i class="fa fa-star" aria-hidden="false"></i>
 					</div>
 				</article>
@@ -57,7 +67,9 @@
 			</main>
 			<button type="button" id="create-review-button"> Create Review </button>
 
-		
 	</body>
+
+		<script src="index.js"></script>
+
 
 </html>

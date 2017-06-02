@@ -8,15 +8,15 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
 
-  <link rel="stylesheet" href = "style.css">
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+    <link rel="stylesheet" href = "style.css">
+    
 </head>
 
 <body>
   <header>
-    <h1 class="site-title"> Rate Your Students </h1>
+    <h1 class="site-title" id="title-button"> Rate Your Students </h1>
     <nav class= "navbar">
       <ul class="navlist">
         <li class= "navitem search-bar">
@@ -30,6 +30,13 @@
         </li>
         <li class= "navitem signin-up">
           <button type="button" id="sign-up-button"> Sign Up </button>
+        </li>
+        <li class="navitem signin-up">
+          <?php
+            if(isset($_COOKIE["user"])) {
+              echo "<h4>" . $_COOKIE["user"] . "</h4>";
+            }
+          ?>
         </li>
       </ul>
     </nav>
@@ -60,6 +67,7 @@
 
 </body>
 
+	<script src="index.js"></script>
   <?php
 include 'connectvarsEECS.php';
 
@@ -80,8 +88,19 @@ function checkUsername($data, $table, $conn) {
   $data = trim($data);
   $query = "SELECT * FROM $table WHERE Username='$data'";
   if(mysqli_query($conn, $query)->num_rows > 0) {
-    return -1;
+    //die(mysqli_error());
+    $conn->close();
+    ?>
+    <script type='text/javascript'>
+      alert("Username already exists");
+      window.location = "signup.php";
+    </script>
+    <?php
   }
+  $data = htmlspecialchars($data);
+  $data = trim($data);
+  if (strlen($data) < 1 || strlen($data) > 20)
+    return -1;
   return $data;
 }
 
@@ -130,7 +149,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   $array = array($userName, $firstName, $lastName, $password);
   foreach ($array as &$value) {
     if($value == -1) {
-      die('Invalid user input ' . mysqli_error());
+      //die(mysqli_error());
+      $conn->close();
+      ?>
+      <script type='text/javascript'>
+        alert("Invalid input, try again");
+        window.location = "signup.php";
+      </script>
+      <?php
     }
   }
 
@@ -138,7 +164,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   VALUES ('$userName', '$firstName', '$lastName', '$password')";
 
   if(!mysqli_query($conn, $sql)) {
-    die('Error inserting to table ' . mysqli_error());
+    //die(mysqli_error());
+    $conn->close();
+    ?>
+    <script type='text/javascript'>
+      alert("If you're reading this, we messed up. Sorry.");
+      window.location = "signup.php";
+    </script>
+    <?php
   }
 }
 

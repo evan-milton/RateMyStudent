@@ -101,6 +101,7 @@ button {
 	font-size: 18px;
 	margin: 0;
 	padding: 5px;
+  margin-left: 3px;
 }
 
 #sign-in-button:hover {
@@ -158,6 +159,10 @@ button {
 	background-color: #97bfe8;
 	color: white;
 	border: 1px solid #97bfe8;
+}
+
+#user-cookie {
+  margin: 6px;
 }
 
 .star-rating{
