@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,15 +9,15 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
 
-  <link rel="stylesheet" href = "style.css">
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <link rel="stylesheet" href = "style.css">
 
 </head>
 
 <body>
   <header>
-    <h1 class="site-title"> Rate Your Students </h1>
+    <h1 class="site-title" id="title-button"> Rate Your Students </h1>
     <nav class= "navbar">
       <ul class="navlist">
         <li class= "navitem search-bar">
@@ -31,28 +32,68 @@
         <li class= "navitem signin-up">
           <button type="button" id="sign-up-button"> Sign Up </button>
         </li>
+        <li class="navitem signin-up">
+          <?php
+            if(isset($_COOKIE["user"])) {
+              echo "<h4>" . $_COOKIE["user"] . "</h4>";
+            }
+            else {
+              ?>
+              <script>
+                alert("Need to be signed in to create a review. Redirecting to Sign In page...");
+                window.location = "login.php";
+              </script>
+              <?php
+            }
+          ?>
+        </li>
       </ul>
     </nav>
   </header>
 
   <div class="container">
-    <h1>Write a Review</h1>
-    <form>
+    <h1>Create Review of Student</h1>
+    <form action="review.php" method="post">
       <div class="form-group">
-        <label for="studentName">Student</label>
-        <input type="text" class="form-control" id="studentName" placeholder="Name">
+        <label for="firstname">Student's First Name</label>
+        <input type="text" class="form-control" id="firstname" name="firstName" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Student's Last Name</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="cohort">Start Year</label>
+        <input type="number" class="form-control" id="cohort" name="cohort" placeholder="Year the student started college">
       </div>
       <div class="form-group">
         <label for="title">Review Title</label>
-        <input type="text" class="form-control" id="title" placeholder="Title">
+        <input type="text" class="form-control" id="title" name="title" placeholder="Title">
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea class="form-control" id="description" rows="3" placeholder="Explain the rating..."></textarea>
+        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Explain the rating..."></textarea>
       </div>
       <div class="form-group">
         <label for="course">Course</label>
-        <input type="text" class="form-control" id="course" placeholder="Course">
+        <select type="text" class="form-control" id="course" name="course">
+          <?php
+          include 'connectvarsEECS.php';
+          // connect
+          $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+          if (!$conn) {
+          die('Could not connect: ' . mysqli_error());
+          }
+              $result = $conn->query("SELECT CourseTag, subject FROM Course");
+              while ($row = $result->fetch_assoc()) {
+                            unset($courseTag, $subject);
+                            $courseTag = $row['CourseTag'];
+                            $subject = $row['subject'];
+                            echo '<option value="'.$courseTag.'">'.$courseTag. " - ".$subject.'</option>';
+
+              }
+          ?>
+        </select>
       </div>
       <div class="form-group">
         <label for="rating">Rating</label>
@@ -76,3 +117,7 @@
   </div>
 
 </body>
+
+<script src="index.js"></script>
+
+</html>

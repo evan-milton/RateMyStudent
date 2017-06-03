@@ -9,3 +9,7 @@ document.getElementById('sign-up-button').onclick = function() {
 document.getElementById('title-button').onclick = function() {
   location.href = "index.php"
 };
+
+document.getElementById('create-review-button').onclick = function() {
+  location.href = "createReview.php"
+};
