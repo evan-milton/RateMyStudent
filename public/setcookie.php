@@ -61,10 +61,9 @@ if(mysqli_query($conn, $sql)->num_rows == 0) {
 }
 else {
   setcookie("user", $userName, time() + (86400 * 30), "/"); // 86400 = 1 day
-  echo $_COOKIE['user'];
 ?>
-
   <script type='text/javascript'>
+    alert("Logging in...");
     window.location = "index.php";
   </script>
 <?php
