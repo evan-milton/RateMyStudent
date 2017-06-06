@@ -53,11 +53,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   Username LIKE \"%$searchTerm%\" OR
   title LIKE \"%$searchTerm%\" OR
   body LIKE \"%$searchTerm%\" OR
-  rating LIKE \"%$searchTerm%\" OR
-  CourseTag LIKE \"%$searchTerm%\" OR
+  rating LIKE \"$searchTerm\" OR
+  CourseTag LIKE \"$searchTerm%\" OR
   StudentFirst LIKE \"%$searchTerm%\" OR
   StudentLast LIKE \"%$searchTerm%\" OR
-  Year LIKE \"%$searchTerm%\" OR
+  Year LIKE \"$searchTerm\" OR
   InstructorFirst LIKE \"%$searchTerm%\" OR
   InstructorLast LIKE \"%$searchTerm%\"";
   $query = mysqli_query($conn, $sql);
