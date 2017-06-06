@@ -6,6 +6,7 @@
   <h1 class="site-title" id="title-button"> Rate My Students </h1>
   <nav class= "navbar">
     <ul class="navlist">
+      <button type="button" id="create-review-button"> Create Review </button>
       <li class= "navitem search-bar">
         <input type="text" id="navbar-search-input" placeholder="Search students...">
         <button type="button" id="navbar-search-button"><i class="fa fa-male" aria-hidden="false"></i>

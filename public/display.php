@@ -50,22 +50,23 @@ function displayTable($result) {
   echo '<div class="container-fluid">';
   echo '<div class="row">';
   echo '<div class="col-md-10 col-md-offset-1">';
-  for($i; $i < $numrows; $i++) {
-    $Username = mysqli_fetch_field($result)->name;
-    $title = mysqli_fetch_field($result)->name;
-    $body = mysqli_fetch_field($result)->name;
-    $rating = mysqli_fetch_field($result)->name;
-    $date = mysqli_fetch_field($result)->name;
-    $Course = mysqli_fetch_field($result)->name;
-    $StudentFirst = mysqli_fetch_field($result)->name;
-    $StudentLast = mysqli_fetch_field($result)->name;
-    $Year = mysqli_fetch_field($result)->name;
-    $InstructorFirst = mysqli_fetch_field($result)->name;
-    $InstructorLast = mysqli_fetch_field($result)->name;
+  for($i=0; $i < $numrows; $i++) {
+    $row = mysqli_fetch_row($result);
+    $Username = $row[0];
+    $title = $row[1];
+    $body = $row[2];
+    $rating = $row[3];
+    $date = $row[4];
+    $Course = $row[5];
+    $StudentFirst = $row[6];
+    $StudentLast = $row[7];
+    $Year = $row[8];
+    $InstructorFirst = $row[9];
+    $InstructorLast = $row[10];
 
     echo '<div class="panel panel-default">';
     echo '<div class="panel-heading">' . $title;
-    for($j; $j < $rating; $j++) {
+    for($j=0; $j < $rating; $j++) {
       echo '<span style="float:right;" class="glyphicon glyphicon-star" aria-hidden="true"></span>';
     }
     echo '</div>';
@@ -78,9 +79,10 @@ function displayTable($result) {
     echo '<li><strong>Course:</strong></li>';
     echo '<li>' . $Course . '</li>';
     echo '</ul>';
-    echo '<p class="text-left">' . $body . '/p>';
-    echo '<li class="text-left"><em>' . $date . '</li>';
-    echo '<li class="text-right"><em>By: ' . $Username . '(' . $InstructorFirst . ' ' . $InstructorLast . ')</li>';
+    echo '<p class="text-left">' . $body . '</p>';
+    echo '<ul class="list-inline">';
+    echo '<li class="text-left"><em>' . $date . '</em></li>';
+    echo '<li class="text-right pull-right"><em>By: ' . $Username . ' (' . $InstructorFirst . ' ' . $InstructorLast . ')</em></li>';
     echo '</ul>';
     echo '</div>';
     echo '</div>';

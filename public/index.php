@@ -16,9 +16,9 @@
 
 	<body>
 	<?php include('header.php'); ?>
+	<?php include('display.php'); ?>
 
-			<button type="button" id="create-review-button"> Create Review </button>
-			<h1 class="rewiews-from-this-week"> Reviews from this week </h1>
+			<h1 class="rewiews-from-this-week"> Reviews </h1>
 			<main class="review-container">
 
 			<?php
@@ -34,26 +34,7 @@
 
 					$query = "SELECT * FROM " . $table;
 					$result = mysqli_query($conn, $query);
-					if($result->num_rows < 1) {
-									die("Query to show fields from table failed");
-					}
-
-					$fields_num = mysqli_num_fields($result);
-					echo "<table border='1'><tr>";
-					// printing table headers
-					for($i=0; $i<$fields_num; $i++) {
-						$field = mysqli_fetch_field($result);
-						echo "<td><b>{$field->name}</b></td>";
-					}
-					echo "</tr>\n";
-					while($row = mysqli_fetch_row($result)) {
-						echo "<tr>";
-						// $row is array... foreach( .. ) puts every element
-						// of $row to $cell variable
-						foreach($row as $cell)
-							echo "<td>$cell</td>";
-						echo "</tr>\n";
-					}
+					displayTable($result);
 					$conn->close();
 			 ?>
 
