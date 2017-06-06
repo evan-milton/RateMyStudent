@@ -14,33 +14,7 @@
 
 </head>
 
-<body>
-  <header>
-    <h1 class="site-title" id="title-button"> Rate Your Students </h1>
-    <nav class= "navbar">
-      <ul class="navlist">
-        <li class= "navitem search-bar">
-          <input type="text" id="navbar-search-input" placeholder="Search students...">
-          <button type="button" id="navbar-search-button"><i class="fa fa-male" aria-hidden="false"></i>
-          </button>
-        </lic>
-
-        <li class= "navitem signin-up">
-          <button type="button" id="sign-in-button"> Sign In </button>
-        </li>
-        <li class= "navitem signin-up">
-          <button type="button" id="sign-up-button"> Sign Up </button>
-        </li>
-        <li class="navitem signin-up">
-          <?php
-            if(isset($_COOKIE["user"])) {
-              echo "<h4>" . $_COOKIE["user"] . "</h4>";
-            }
-          ?>
-        </li>
-      </ul>
-    </nav>
-  </header>
+	<?php include('header.php'); ?>
 
   <div class="container">
     <h1>Sign in to Your Account</h1>

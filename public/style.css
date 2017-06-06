@@ -104,6 +104,16 @@ button {
   margin-left: 3px;
 }
 
+#logout-button {
+	border-radius: 3px;
+	background: none;
+	border: 1px solid #dadada;
+	font-size: 18px;
+	margin: 0;
+	padding: 5px;
+  margin-left: 3px;
+}
+
 #sign-in-button:hover {
 	color: white;
 	background-color: #97bfe8;
@@ -112,6 +122,13 @@ button {
 }
 
 #sign-up-button:hover {
+	color: white;
+	background-color: #97bfe8;
+	border: 1px solid #97bfe8;
+	cursor: pointer;
+}
+
+#logout-button:hover {
 	color: white;
 	background-color: #97bfe8;
 	border: 1px solid #97bfe8;
