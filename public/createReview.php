@@ -13,12 +13,16 @@
 
   <link rel="stylesheet" href = "style.css">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
 
   <?php
   include('header.php');
+  include('createCourseModal.php');
   if(!(isset($_COOKIE["user"]))) {
     ?>
     <script>
@@ -52,7 +56,7 @@
         <textarea class="form-control" id="description" name="description" rows="3" placeholder="Explain the rating..."></textarea>
       </div>
       <div class="form-group">
-        <label for="course">Course</label>
+        <label for="course">Course</label><span id="myBtn course-modal" data-toggle="modal" data-target="#myModal"> Not listed? Create a course.</span>
         <select type="text" class="form-control" id="course" name="course">
           <?php
           include 'connectvarsEECS.php';
@@ -94,5 +98,11 @@
   </div>
 
 </body>
-
+<script>
+$(document).ready(function(){
+    $("#myBtn").click(function(){
+        $('#myModal').modal(options)
+    });
+});
+</script>
 </html>

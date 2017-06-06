@@ -137,6 +137,10 @@ button {
 	cursor: pointer;
 }
 
+#course-modal:hover {
+  cursor: pointer;
+}
+
 .rewiews-from-this-week {
 	text-align: center;
 	font-family: 'VT323', monospace;
