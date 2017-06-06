@@ -156,5 +156,4 @@ $conn->close();
 
 ?>
 
-<script src="index.js"></script>
 </html>

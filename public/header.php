@@ -8,9 +8,13 @@
     <ul class="navlist">
       <button type="button" id="create-review-button"> Create Review </button>
       <li class= "navitem search-bar">
-        <input type="text" id="navbar-search-input" placeholder="Search students...">
-        <button type="button" id="navbar-search-button"><i class="fa fa-male" aria-hidden="false"></i>
-        </button>
+        <form action="search.php" method="post">
+            <div class="form-group">
+            <input type="text" id="navbar-search-input" name="searchTerm" placeholder="Search for reviews..." required>
+            <button type="submit" id="navbar-search-button"><i class="fa fa-male" aria-hidden="false"></i>
+            </button>
+            </div>
+        </form>
       </lic>
       <?php
       //checks if the there is user cookie, and presents the right information for logged in users
@@ -35,3 +39,4 @@
     </ul>
   </nav>
 </header>
+	<script src="index.js"></script>
