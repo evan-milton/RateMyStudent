@@ -76,6 +76,7 @@ foreach ($array as &$value) {
   }
 }
 
+//  COHORT
 $sqlCohort = "SELECT Year FROM Cohort WHERE Year = '$cohort'";
 
 if(mysqli_query($conn, $sqlCohort)->num_rows == 0) {
@@ -94,6 +95,7 @@ if(mysqli_query($conn, $sqlCohort)->num_rows == 0) {
   }
 }
 
+//  STUDENT
 $sqlStudent = "SELECT SSN FROM Student WHERE
 Year = '$cohort' AND firstName = '$firstName' AND lastName = '$lastName'";
 
@@ -115,10 +117,13 @@ if(mysqli_query($conn, $sqlStudent)->num_rows == 0) {
   }
 }
 
+//  COOKIE
 $SSN = mysqli_query($conn, $sqlStudent)->fetch_object()->SSN;
 $cookie = $_COOKIE["user"];
 $date = date("Y-m-d");
 
+
+//  review
 $sqlReview = "INSERT INTO Review (ID, title, body, rating, SSN, Username, CourseTag, date)
 VALUES(NULL, '$title', '$description', '$rating', '$SSN', '$cookie', '$course', '$date')";
 if(!mysqli_query($conn, $sqlReview)) {
