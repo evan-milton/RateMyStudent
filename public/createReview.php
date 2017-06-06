@@ -26,7 +26,7 @@
   if(!(isset($_COOKIE["user"]))) {
     ?>
     <script>
-    alert("Need to be signed in to create a review. Redirecting to Sign In page...");
+    alert("Need to be signed in to create a review. Redirecting to Login page...");
     window.location = "login.php";
     </script>
     <?php
@@ -49,14 +49,14 @@
       </div>
       <div class="form-group">
         <label for="title">Review Title</label>
-        <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+        <input type="text" class="form-control" id="title" name="title" placeholder="">
       </div>
       <div class="form-group">
         <label for="description">Description</label>
         <textarea class="form-control" id="description" name="description" rows="3" placeholder="Explain the rating..."></textarea>
       </div>
       <div class="form-group">
-        <label for="course">Course</label><span id="myBtn course-modal" data-toggle="modal" data-target="#myModal"> Not listed? Create a course.</span>
+        <label for="course">Course</label><a id="myBtn course-modal" data-toggle="modal" href="#myModal"> Not listed? Create a course.</a>
         <select type="text" class="form-control" id="course" name="course">
           <?php
           include 'connectvarsEECS.php';
@@ -104,5 +104,10 @@ $(document).ready(function(){
         $('#myModal').modal(options)
     });
 });
+// if(document.getElementById('cohort-button')) {
+//   document.getElementById('cohort-button').onclick = function() {
+//     location.href = "cohortReview.php"
+//   };
+// }
 </script>
 </html>

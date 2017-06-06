@@ -141,6 +141,11 @@ button {
   cursor: pointer;
 }
 
+/*#cohort-button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}*/
+
 .rewiews-from-this-week {
 	text-align: center;
 	font-family: 'VT323', monospace;
@@ -192,6 +197,7 @@ button {
 
 .star-rating{
     font-size: 0;
+    color: #97bfe8;
 }
 .star-rating__wrap{
     display: inline-block;
@@ -206,7 +212,7 @@ button {
     float: right;
     padding-left: 2px;
     cursor: pointer;
-    color: #FFB300;
+    color: #97bfe8;
 }
 .star-rating__ico:last-child{
     padding-left: 0;

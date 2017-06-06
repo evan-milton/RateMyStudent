@@ -17,7 +17,7 @@
 	<?php include('header.php'); ?>
 
   <div class="container">
-    <h1>Sign in to Your Account</h1>
+    <h1>Login to Your Account</h1>
     <form action="setcookie.php" method="post">
       <div class="form-group">
         <label for="username">Username</label>
