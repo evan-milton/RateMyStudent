@@ -16,8 +16,18 @@
 </head>
 
 <body>
-	<?php include('header.php'); ?>
 
+  <?php
+  include('header.php');
+  if(!(isset($_COOKIE["user"]))) {
+    ?>
+    <script>
+    alert("Need to be signed in to create a review. Redirecting to Sign In page...");
+    window.location = "login.php";
+    </script>
+    <?php
+  }
+  ?>
   <div class="container">
     <h1>Create Review of Student</h1>
     <form action="review.php" method="post">
