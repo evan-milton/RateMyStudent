@@ -36,6 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   title LIKE \"%'$searchTerm'%\" OR
   body LIKE \"%'$searchTerm'%\" OR
   rating LIKE \"%'$searchTerm'%\" OR
+  CourseTag LIKE \"%'SearchTerm'%\" OR
   StudentFirst LIKE \"%'$searchTerm'%\" OR
   StudentLast LIKE \"%'$searchTerm'%\" OR
   Year LIKE \"%'$searchTerm'%\" OR
