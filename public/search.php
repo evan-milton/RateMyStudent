@@ -25,11 +25,13 @@ $table = "SearchTable";
 
 //      ########FUNCTIONS#########
 
+//Makes sure search queue is correct
 function checkInput($data) {
 
 if (gettype($data) == "string") {
   $data = htmlspecialchars($data);
   $data = trim($data);
+	 $data = addslashes($data);
   if (strlen($data) < 1 || strlen($data) > 20)
     return -1;
 }
@@ -59,7 +61,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   StudentLast LIKE \"%$searchTerm%\" OR
   Year LIKE \"$searchTerm\" OR
   InstructorFirst LIKE \"%$searchTerm%\" OR
-  InstructorLast LIKE \"%$searchTerm%\"";
+  InstructorLast LIKE \"%$searchTerm%\"
+	ORDER BY date DESC";
   $query = mysqli_query($conn, $sql);
   displayTable($query);
 }

@@ -13,7 +13,7 @@
   <link rel="stylesheet" href = "style.css">
 
 </head>
-
+  <!-- Loads the header on every page -->
 	<?php include('header.php'); ?>
 
   <div class="container">

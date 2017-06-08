@@ -23,6 +23,7 @@
   <?php
   include('header.php');
   include('createCourseModal.php');
+  //Will ensure that the user is signed in by checking that there is a cookie
   if(!(isset($_COOKIE["user"]))) {
     ?>
     <script>
@@ -52,8 +53,8 @@
         <input type="text" class="form-control" id="title" name="title" placeholder="">
       </div>
       <div class="form-group">
-        <label for="description">Description</label>
-        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Explain the rating..."></textarea>
+        <label for="descriptiono">Description</label>
+        <input type="text" class="form-control" id="descriptiono" name="description" rows="3" placeholder="Explain the rating..."></input>
       </div>
       <div class="form-group">
         <label for="course">Course</label><a id="myBtn course-modal" data-toggle="modal" href="#myModal"> Not listed? Create a course.</a>
@@ -65,6 +66,7 @@
           if (!$conn) {
           die('Could not connect: ' . mysqli_error());
           }
+          //Generates all of the courses from the table
               $result = $conn->query("SELECT CourseTag, subject FROM Course");
               while ($row = $result->fetch_assoc()) {
                             unset($courseTag, $subject);
@@ -76,6 +78,7 @@
           ?>
         </select>
       </div>
+      <!-- Here is how the stars are created -->
       <div class="form-group">
         <label for="rating">Rating</label>
         <div class="star-rating">

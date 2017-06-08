@@ -15,6 +15,7 @@
 </head>
 
 <body>
+  <!-- Includes header on every page. -->
 	<?php include('header.php'); ?>
 
   <div class="container">

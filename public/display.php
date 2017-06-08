@@ -1,9 +1,11 @@
 <?php
+//Generates the list of reviews for the query provided
 function displayTable($result) {
   $numrows = $result->num_rows;
   echo '<div class="container-fluid">';
   echo '<div class="row">';
   echo '<div class="col-md-10 col-md-offset-1">';
+  //loops through for the number of results
   for($i=0; $i < $numrows; $i++) {
     $row = mysqli_fetch_row($result);
     $Username = $row[0];
@@ -20,6 +22,7 @@ function displayTable($result) {
 
     echo '<div class="panel panel-default">';
     echo '<div class="panel-heading">' . $title;
+    //generates the number of stars
     for($j=0; $j < $rating; $j++) {
       echo '<span style="float:right; color:#97bfe8;" class="glyphicon glyphicon-star" aria-hidden="true"></span>';
     }

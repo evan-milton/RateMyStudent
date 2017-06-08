@@ -25,3 +25,5 @@
     </div>
   </div>
 </div>
+
+<!-- Modal for course. Self explanatory. -->

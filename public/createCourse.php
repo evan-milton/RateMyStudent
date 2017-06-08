@@ -13,17 +13,20 @@ $table = "Course";
 
 //      ########FUNCTIONS#########
 
+//scrub data and makes sure input is valid
 function checkInput($data) {
 
 if (gettype($data) == "string") {
   $data = htmlspecialchars($data);
   $data = trim($data);
+  $data = addslashes($data);
   if (strlen($data) < 1 || strlen($data) > 10)
     return -1;
 }
 return $data;
 }
 
+//scrub data and makes sure input is valid
 function checkInput2($data) {
 
 if (gettype($data) == "string") {
@@ -35,8 +38,9 @@ if (gettype($data) == "string") {
 return $data;
 }
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
 
+//Makes sure page is accessed by post request
+if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // insert into table if input is proper
 $tag = checkInput($_POST["tag"]);
@@ -49,13 +53,14 @@ foreach ($array as &$value) {
     $conn->close();
     ?>
     <script type='text/javascript'>
-        alert("Please enter valid inputs");
+        alert("Please enter valid inputs. (Course tag should be 1-10 chars and name 1-40 chars)");
       window.location = "createReview.php";
     </script>
     <?php
   }
 }
 
+//Will only insert if there isn't already a course under the name or tag
 $sql = "SELECT CourseTag FROM Course WHERE CourseTag = '$tag' OR subject = '$name'";
 
 if(mysqli_query($conn, $sql)->num_rows == 0) {
@@ -71,6 +76,7 @@ if(mysqli_query($conn, $sql)->num_rows == 0) {
     </script>
     <?php
   }
+  //if query is sucessful go here
   else {
     $conn->close();
     ?>
@@ -81,6 +87,7 @@ if(mysqli_query($conn, $sql)->num_rows == 0) {
     <?php
   }
 }
+//if there are rows returned, then course exists
 else {
   $conn->close();
   ?>

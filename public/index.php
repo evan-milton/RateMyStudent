@@ -15,6 +15,7 @@
 	</head>
 
 	<body>
+	<!-- inserts the header and display function -->
 	<?php include('header.php'); ?>
 	<?php include('display.php'); ?>
 
@@ -32,7 +33,8 @@
 							die('Could not connect: ' . mysqli_error());
 					}
 
-					$query = "SELECT * FROM " . $table;
+					//Orders reviews by date descending and calls the displayTable 
+					$query = "SELECT * FROM " . $table . " ORDER BY date DESC";
 					$result = mysqli_query($conn, $query);
 					displayTable($result);
 					$conn->close();

@@ -18,6 +18,7 @@ function checkInput($data) {
 if (gettype($data) == "string") {
   $data = htmlspecialchars($data);
   $data = trim($data);
+  $data = addslashes($data);
   if (strlen($data) < 1 || strlen($data) > 20)
     return -1;
 }
@@ -47,6 +48,7 @@ foreach ($array as &$value) {
   }
 }
 
+//Checks if username and password combo exists
 $sql = "SELECT * FROM $table WHERE Username = '$userName' AND password = '$password'";
 
 if(mysqli_query($conn, $sql)->num_rows == 0) {
@@ -60,6 +62,7 @@ if(mysqli_query($conn, $sql)->num_rows == 0) {
   <?php
 }
 else {
+  //Generates a cookie for user
   setcookie("user", $userName, time() + (86400 * 30), "/"); // 86400 = 1 day
 ?>
   <script type='text/javascript'>

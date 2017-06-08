@@ -16,8 +16,14 @@ $table = "Instructor";
 function checkUsername($data, $table, $conn) {
 $data = htmlspecialchars($data);
 $data = trim($data);
+$data = addslashes($data);
+if (strlen($data) < 1 || strlen($data) > 20)
+  return -1;
+
 $query = "SELECT * FROM $table WHERE Username='$data'";
+
 if(mysqli_query($conn, $query)->num_rows > 0) {
+  //user already exists
   //die(mysqli_error());
   $conn->close();
   ?>
@@ -27,13 +33,11 @@ if(mysqli_query($conn, $query)->num_rows > 0) {
   </script>
   <?php
 }
-$data = htmlspecialchars($data);
-$data = trim($data);
-if (strlen($data) < 1 || strlen($data) > 20)
-  return -1;
+
 return $data;
 }
 
+//checks password
 function checkInput($data) {
 
 if (gettype($data) == "string") {
@@ -41,26 +45,6 @@ if (gettype($data) == "string") {
   $data = trim($data);
   if (strlen($data) < 1 || strlen($data) > 20)
     return -1;
-}
-return $data;
-}
-
-function checkAge($data) {
-
-$value = (int)preg_replace("/[^\d]+/","",$data);
-if ($value < 0 || $value > 130)
-return -1;
-
-return $data;
-}
-
-function checkEmail($data) {
-
-if (gettype($data) == "string") {
-  $data = htmlspecialchars($data);
-  $data = trim($data);
-  if (strlen($data) < 1 || strlen($data) > 40)
-  return -1;
 }
 return $data;
 }
@@ -83,7 +67,7 @@ foreach ($array as &$value) {
     $conn->close();
     ?>
     <script type='text/javascript'>
-      alert("Invalid input, try again");
+      alert("Invalid input, try again. (All fields limited to 1-20 characters)");
       window.location = "signup.php";
     </script>
     <?php
@@ -105,6 +89,7 @@ if(!mysqli_query($conn, $sql)) {
 }
 else {
   $conn->close();
+  //generates cookie for username
   setcookie("user", $userName, time() + (86400 * 30), "/"); // 86400 = 1 day
 ?>
   <script type='text/javascript'>
