@@ -54,7 +54,7 @@
       </div>
       <div class="form-group">
         <label for="descriptiono">Description</label>
-        <input type="text" class="form-control" id="descriptiono" name="description" rows="3" placeholder="Explain the rating..."></input>
+        <textarea class="form-control" id="descriptiono" name="description" rows="3" placeholder="Explain the rating..."></textarea>
       </div>
       <div class="form-group">
         <label for="course">Course</label><a id="myBtn course-modal" data-toggle="modal" href="#myModal"> Not listed? Create a course.</a>
